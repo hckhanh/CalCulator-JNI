@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">CalculatorGUI</string>
+    <string name="app_name">Calculator-JNI</string>
     <string name="action_settings">Settings</string>
 </resources>
