@@ -13,4 +13,6 @@ public class Calculator {
 
     public static native float calculate(float number1, float number2, int operator);
 
+    public static native int stringToId(String operator);
+
 }

@@ -1,25 +1,41 @@
 package com.example.ohk1hc.calculatorgui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CalculatorActivity extends AppCompatActivity {
+public class CalculatorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    @Bind(R.id.editText)
-    EditText editText;
+    @Bind(R.id.spinnerOperator)
+    Spinner spinnerOperator;
+
+    @Bind(R.id.calcBtn)
+    Button calcBtn;
+
+    @Bind(R.id.editTextNumber1)
+    EditText editTextNumber1;
+
+    @Bind(R.id.editTextNumber2)
+    EditText editTextNumber2;
+
+    @Bind(R.id.editTextResult)
+    EditText editTextResult;
+
+    ArrayAdapter<CharSequence> operatorsAdapter;
+
+    int currentOperator = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +46,24 @@ public class CalculatorActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        float demo = Calculator.calculate(12.0f, 0f, Calculator.SUMMATION);
-        editText.setText(String.valueOf(demo));
-//        Toast.makeText(this, Float.toString(demo), Toast.LENGTH_SHORT)
-//            .show();
+        operatorsAdapter = ArrayAdapter.createFromResource(this, R.array.operators, android.R.layout.simple_spinner_item);
+        operatorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerOperator.setAdapter(operatorsAdapter);
+        spinnerOperator.setOnItemSelectedListener(this);
+
+        calcBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    float number1 = Float.parseFloat(editTextNumber1.getText().toString());
+                    float number2 = Float.parseFloat(editTextNumber2.getText().toString());
+
+                    editTextResult.setText(String.format("%f", Calculator.calculate(number1, number2, currentOperator)));
+                } catch (ArithmeticException e) {
+                    editTextResult.setText("Cannot divide by Zero!");
+                }
+            }
+        });
     }
 
     @Override
@@ -56,5 +86,23 @@ public class CalculatorActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String operator = (String) operatorsAdapter.getItem(position);
+        if (operator.equals("+"))
+            currentOperator = Calculator.SUMMATION;
+        else if (operator.equals("-"))
+            currentOperator = Calculator.SUBTRACTION;
+        else if (operator.equals("*"))
+            currentOperator = Calculator.MULTIPLICATION;
+        else if (operator.equals("/"))
+            currentOperator = Calculator.DIVISION;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -19,8 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/spinner"
-        android:layout_alignEnd="@+id/spinner">
+        android:layout_alignRight="@+id/spinnerOperator"
+        android:layout_alignEnd="@+id/spinnerOperator">
 
         <EditText
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerOperator"
         android:layout_below="@+id/textInputNumber1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -46,11 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textInputNumber2"
-        android:layout_below="@+id/spinner"
+        android:layout_below="@+id/spinnerOperator"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/spinner"
-        android:layout_alignEnd="@+id/spinner"
+        android:layout_alignRight="@+id/spinnerOperator"
+        android:layout_alignEnd="@+id/spinnerOperator"
         android:hint="Number 2">
 
         <EditText
@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="="
-        android:id="@+id/button"
+        android:id="@+id/calcBtn"
         android:layout_below="@+id/textInputNumber2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -77,19 +77,19 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_below="@+id/button"
+        android:id="@+id/editTextResult"
+        android:layout_below="@+id/calcBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_alignRight="@+id/calcBtn"
+        android:layout_alignEnd="@+id/calcBtn" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Auto calculate"
         android:id="@+id/checkBox"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextResult"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

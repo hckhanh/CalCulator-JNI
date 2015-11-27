@@ -25,4 +25,6 @@ JNIEXPORT jfloat JNICALL Java_com_example_ohk1hc_calculatorgui_Calculator_calcul
                 return jnumber1 / jnumber2;
             }
     }
+
+    LOGD("CalculatorAPI", jnumber1, jnumber2, joperator);
 }
