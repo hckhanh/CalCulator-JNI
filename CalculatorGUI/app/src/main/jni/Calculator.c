@@ -7,6 +7,9 @@
 
 JNIEXPORT jfloat JNICALL Java_com_example_ohk1hc_calculatorgui_Calculator_calculate
         (JNIEnv* env, jclass jobj, jfloat jnumber1, jfloat jnumber2, jint joperator){
+
+    LOGE(STRING(jnumber1));
+
     switch (joperator) {
         case SUMMATION:
             return jnumber1 + jnumber2;
@@ -25,6 +28,4 @@ JNIEXPORT jfloat JNICALL Java_com_example_ohk1hc_calculatorgui_Calculator_calcul
                 return jnumber1 / jnumber2;
             }
     }
-
-    LOGD("CalculatorAPI", jnumber1, jnumber2, joperator);
 }
