@@ -84,8 +84,7 @@
         android:layout_alignRight="@+id/calcBtn"
         android:layout_alignEnd="@+id/calcBtn"
         android:editable="false"
-        android:textSize="35sp"
-        android:text="54645685468" />
+        android:textSize="35sp" />
 
     <CheckBox
         android:layout_width="wrap_content"
